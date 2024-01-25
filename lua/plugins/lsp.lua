@@ -17,15 +17,18 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")
-      lspconfig.gopls.setup({})
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      lspconfig.gopls.setup({
+        capabilities = capabilities
+      })
       lspconfig.lua_ls.setup({
-        on_attach = function()
-        end
+        capabilities = capabilities
       })
       lspconfig.rust_analyzer.setup({
-        on_attach = function(client)
+        on_attach = function()
           -- require("completion").on_attach(client)
         end,
+        capabilities = capabilities,
         settings = {
           ["rust-analyzer"] = {
             cmd = {
