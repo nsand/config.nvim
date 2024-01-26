@@ -1,3 +1,10 @@
+-- Set the color scheme while also updating some highlighting that is dependent
+-- on that theme
+local set_theme = function (theme)
+  vim.cmd.colorscheme(theme)
+  vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Debug" })
+end
+
 -- Gruvbox
 local gruvbox = {
   'ellisonleao/gruvbox.nvim',
@@ -6,7 +13,7 @@ local gruvbox = {
   config = function()
     require('gruvbox').setup({
     })
-    vim.cmd.colorscheme 'gruvbox'
+    set_theme('gruvbox')
   end
 }
 -- Catppuccin
@@ -14,7 +21,7 @@ local catppuccin = {
   'catppuccin/nvim',
   name = 'catppuccin',
   priority = 1000 ,
-  config = function() 
+  config = function()
     require('catppuccin').setup({
       flavor = 'macchiato',
       integrations = {
@@ -24,7 +31,7 @@ local catppuccin = {
         which_key = true
       }
     })
-    vim.cmd.colorscheme 'catppuccin-macchiato'
+    set_theme('catppuccin-macchiato')
   end
 }
 
@@ -34,7 +41,7 @@ local nord = {
   name = 'nord',
   priority = 1000,
   config = function()
-    vim.cmd.colorscheme 'nord'
+    set_theme('nord')
   end
 }
 
@@ -44,8 +51,7 @@ local rose_pine = {
   name = 'rose-pine',
   priority = 1000,
   config = function()
-    require('rose-pine').setup({})
-    vim.cmd.colorscheme 'rose-pine'
+    set_theme('rose-pine')
   end
 }
 
@@ -57,7 +63,7 @@ local kanagawa = {
     require('kanagawa').setup({
       theme = 'wave'
     })
-    vim.cmd.colorscheme 'kanagawa'
+    set_theme('kanagawa')
   end
 }
 
@@ -69,9 +75,10 @@ local everforest = {
   name = 'everforest',
   config = function()
     require('everforest').setup({})
-    vim.cmd.colorscheme 'everforest'
+    set_theme('everforest')
   end
 }
+
 
 return {
   rose_pine

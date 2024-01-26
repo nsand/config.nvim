@@ -12,4 +12,11 @@ return {
       })
     end
   }
+  -- {
+  --   "nvim-treesitter/nvim-treesitter-context",
+  --   enabled = false,
+  --   config = function ()
+  --     vim.notify("I am in treesitter")
+  --   end
+  -- }
 }

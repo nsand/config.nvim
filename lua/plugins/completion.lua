@@ -89,7 +89,7 @@ return {
               fallback()
             end
           end, { "i", "s" }),
-          ["<Space>"] = cmp.mapping(function (fallback)
+          ["<S-Space>"] = cmp.mapping(function (fallback)
             if cmp.visible() then
               cmp.confirm({ select = true })
             else

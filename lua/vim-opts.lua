@@ -5,6 +5,8 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 
 -- Line Numbers
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "both"
 vim.opt.number = true
 vim.opt.relativenumber = true
 

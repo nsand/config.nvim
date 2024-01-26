@@ -38,7 +38,7 @@ return {
               allFeatures = true
             },
             procMacro = {
-                enable = true
+                enabled = true
             }
           }
         }
