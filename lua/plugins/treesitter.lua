@@ -11,12 +11,15 @@ return {
         indent = { enable = true }
       })
     end
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    config = function ()
+      local context = require("treesitter-context")
+      context.setup({
+      })
+      context.toggle()
+      vim.keymap.set("n", "<leader>ct", "<CMD>:TSContextToggle<CR>")
+    end
   }
-  -- {
-  --   "nvim-treesitter/nvim-treesitter-context",
-  --   enabled = false,
-  --   config = function ()
-  --     vim.notify("I am in treesitter")
-  --   end
-  -- }
 }

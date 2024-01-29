@@ -25,7 +25,18 @@ vim.opt.backup = false
 -- vim.opt.undodir = os.getenv("HOME") .. '/.vim/undos'
 -- vim.opt.undofile = true
 
+-- Colors
+vim.opt.termguicolors = true
+
 -- Some keymappings
 vim.g.mapleader = " "
 vim.keymap.set("n", "<Esc><Esc>", "<Esc>:noh<CR><Esc>", {})
 vim.keymap.set("n", "<leader>.", ":cd %:h<CR>", {})
+
+-- Filetypes
+vim.filetype.add({
+  extension = {
+    cmp = "html",
+    intf = "html"
+  }
+})
