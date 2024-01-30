@@ -14,7 +14,23 @@ return {
     end
   },
   {
+    "j-hui/fidget.nvim",
+    version = "*",
+    config = function()
+      require("fidget").setup({
+        progress = {
+          display = {
+            done_icon = ""
+          }
+        }
+      })
+    end
+  },
+  {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPost" },
+    dependencies = {
+    },
     config = function()
       local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()

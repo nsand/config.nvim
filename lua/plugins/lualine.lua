@@ -11,6 +11,21 @@ return {
   opts = {
   },
   config = function()
+    local ok, noice = pcall(require, "noice")
+    local x = {}
+    if ok then
+      -- If noice is installed, use it to add recording info to lualine
+      x = {
+        {
+          noice.api.statusline.mode.get,
+          cond = require("noice").api.status.mode.has,
+          color = {
+            gui = "bold",
+            fg = string.format("#%06x", vim.api.nvim_get_hl(0, { name = "Macro" }).fg)
+          },
+        }
+      }
+    end
     require('lualine').setup({
       options = {
         theme = lineTheme,
@@ -21,8 +36,8 @@ return {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff', 'diagnostics'},
         lualine_c = {'filename'},
-        lualine_x = {'filetype'},
-        lualine_y = {},
+        lualine_x = x,
+        lualine_y = {'filetype'},
         lualine_z = {'location'}
       },
     })

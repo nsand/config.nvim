@@ -10,6 +10,12 @@ vim.opt.cursorlineopt = "both"
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Hides the mode so only recording shows in lualine
+vim.opt.showmode = false
+
+-- Set this to yes to avoid the jump when changes are made
+vim.opt.signcolumn = "yes"
+
 -- Show whitespace
 vim.opt.list = true
 vim.cmd("set lcs+=leadmultispace:∙,tab:_,trail:∙,eol:↲")
