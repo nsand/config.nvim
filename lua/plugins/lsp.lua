@@ -8,8 +8,20 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
+      local langs = { "gopls", "lua_ls", "rust_analyzer" }
+      -- Only install jdtls when JAVA_HOME is defined
+      if os.getenv("JAVA_HOME") then
+        table.insert(langs, "jdtls")
+      end
+      -- Conditionally install tsserver and lwc_ls if lwc is defined on the system
+      local lwc_path = os.getenv("HOME") .. "/tools/lwc"
+      local ok, _ = os.rename(lwc_path, lwc_path)
+      if ok then
+        table.insert(langs, "tsserver")
+        table.insert(langs, "lwc_ls")
+      end
       require("mason-lspconfig").setup({
-        ensure_installed = { "gopls", "lua_ls", "rust_analyzer" }
+        ensure_installed = langs
       })
     end
   },
