@@ -12,10 +12,11 @@ return {
   },
   config = function()
     local ok, noice = pcall(require, "noice")
-    local x = {}
+    local lazy_status = require("lazy.status")
+    local x = { { lazy_status.updates, cond = lazy_status.has_updates, color = { fg = string.format("#%06x", vim.api.nvim_get_hl(0, { name = "Error" }).fg), gui = "bold" } }}
     if ok then
       -- If noice is installed, use it to add recording info to lualine
-      x = {
+      table.insert(x, 1,
         {
           noice.api.statusline.mode.get,
           cond = require("noice").api.status.mode.has,
@@ -24,7 +25,7 @@ return {
             fg = string.format("#%06x", vim.api.nvim_get_hl(0, { name = "Macro" }).fg)
           },
         }
-      }
+      )
     end
     require('lualine').setup({
       options = {
