@@ -10,6 +10,7 @@ return {
           "c",
           "go",
           "html",
+          "java",
           "javascript",
           "json",
           "lua",
@@ -18,6 +19,7 @@ return {
           "regex",
           "rust",
           "toml",
+          "typescript",
           "vim",
           "yaml"
         },

@@ -71,6 +71,19 @@ return {
           }
         }
       })
+      if (lspconfig.tsserver) then
+        lspconfig.tsserver.setup({
+          capabilities = capabilities,
+          root_dir = function(fn)
+            local util = require("lspconfig.util")
+            local bazel_root = util.root_pattern("BUILD.bazel")(fn)
+            return bazel_root
+          end
+        })
+        lspconfig.lwc_ls.setup({
+          capabilities = capabilities
+        })
+      end
 
       -- Keybindings
       vim.opt.completeopt = { "menu" }
